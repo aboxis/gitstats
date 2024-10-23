@@ -50,7 +50,7 @@ func main() {
 		//globalStats := make(map[string][2]int) // Global stats across all repos
 
 		processDir := func(dir string) error {
-			args := []string{"-C", dir, "log", "--pretty=%ae", "--shortstat",
+			args := []string{"--no-pager", "-C", dir, "log", "--pretty=%ae", "--shortstat",
 				"--since=" + firstDayOfMonth.Format("2006-01-02"),
 				"--until=" + lastDayOfMonth.Format("2006-01-02"),
 				"--", "\"*.go\"", "--", "\"*.php\""}
