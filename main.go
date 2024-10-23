@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -53,7 +54,10 @@ func main() {
 			args := []string{"--no-pager", "-C", dir, "log", "--pretty=%ae", "--shortstat",
 				"--since=" + firstDayOfMonth.Format("2006-01-02"),
 				"--until=" + lastDayOfMonth.Format("2006-01-02"),
-				"--", "\"*.go\"", "--", "\"*.php\""}
+				"--", "*.go", "--", "*.php"}
+
+			commandStr := strings.Join(args, " ")
+			log.Println(commandStr)
 
 			cmd := exec.Command("git", args...)
 			output, err := cmd.Output()
