@@ -64,7 +64,7 @@ func main() {
 			args := []string{"-C", dir, "log", "--pretty=%ae", "--shortstat",
 				"--since=" + firstDayOfMonth.Format("2006-01-02"),
 				"--until=" + lastDayOfMonth.Format("2006-01-02"),
-				"--", "*.go", "--", "*.php"}
+				"--", "\"*.go\"", "--", "\"*.php\""}
 
 			cmd := exec.Command("git", args...)
 			output, err := cmd.Output()
