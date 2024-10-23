@@ -35,10 +35,13 @@ func main() {
 
 	monthsBackPtr := flag.Int("m", 1, "Number of months to check backward")
 	allReposPtr := flag.Bool("a", false, "Analyze all repositories in subdirectories")
+	baseDirStr := flag.String("p", ".", "Path for analysis ( . by default)")
 	flag.Parse()
 
+	baseDir := *baseDirStr
+
 	// Determine the base directory to work in
-	baseDir := "."
+
 	if *allReposPtr {
 		var err error
 		baseDir, err = os.Getwd()
@@ -78,7 +81,8 @@ func main() {
 					continue
 				}
 
-				if strings.Contains(line, "files changed") {
+				if strings.Contains(line, "files changed") ||
+					strings.Contains(line, "file changed") {
 					insertions := insertionRegex.FindStringSubmatch(line)
 					deletions := deletionRegex.FindStringSubmatch(line)
 
