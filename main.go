@@ -40,17 +40,6 @@ func main() {
 
 	baseDir := *baseDirStr
 
-	// Determine the base directory to work in
-
-	if *allReposPtr {
-		var err error
-		baseDir, err = os.Getwd()
-		if err != nil {
-			fmt.Printf("Failed to get current working directory: %s\n", err)
-			return
-		}
-	}
-
 	for i := 0; i < *monthsBackPtr; i++ {
 		// Calculate the date range
 
