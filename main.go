@@ -54,7 +54,14 @@ func main() {
 			args := []string{"--no-pager", "-C", dir, "log", "--pretty=%ae", "--shortstat",
 				"--since=" + firstDayOfMonth.Format("2006-01-02"),
 				"--until=" + lastDayOfMonth.Format("2006-01-02"),
-				"--", "*.go", "--", "*.php"}
+				"--", "*.swift",
+				"--", "*.yml",
+				"--", "*.java",
+				"--", "*.kt",
+				"--", "*.md",
+				"--", "*.",
+				"--", "*.php",
+			}
 
 			commandStr := strings.Join(args, " ")
 			log.Println(commandStr)
